@@ -1,6 +1,6 @@
 
-git clone "https://github.com/KBA-Learning/chf-vb14-project-shreevnr.git"
-github token "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"
+git clone "https://github.com/shreevnr/hyperledger_fabric.git"
+
 
 
 cd KBA-project_V3/
