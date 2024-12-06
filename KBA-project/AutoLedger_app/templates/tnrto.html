@@ -1,0 +1,246 @@
+{{template "header.html"}}
+
+<div class="px-3 py-2 bg-secondary text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <h2 href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                <svg class="bi d-block mx-auto mb-1 " width="24" height="24"></svg>
+                {{.title}}
+            </h2>
+            <a type="button" class="btn btn-danger filled" href="/" class="nav-link text-white">
+                Logout
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+<div class="jumbotron jumbotronTNRTO jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">TamilNaduRTO Dashboard</h1>
+        <p class="lead"> Vehicle-Related-Services. <mark>TNRTO</mark> All your Certificates Vehicle-Related-Services
+            related to Vehicles are managed seamless.</p>
+    </div>
+</div>
+</br>
+<div class="container-fluid">
+    <div class="row rowBox">
+        <div class="col-md-5 col-sm-12"></div>
+        <div class="col-md-4 col-sm-12">
+            <button type="submit" onclick="tnrtoCertificates()" class="btn btn-fill btn-primary rounded-pill">Show All
+                Certificates</button>
+        </div>
+        <div class="col-md-3 col-sm-12">
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row rowBox">
+        <div class="col-md-3 col-sm-12"></div>
+        <div class="col-md-6 col-sm-12">
+            <div class="card card-shadow">
+                <div class="card-header" style="background-color:teal">
+                    <legend class="text-center" data-bs-toggle="collapse" href="#collapseRaise" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">Create New RC</legend></br>
+                </div>
+                <div class="card-body collapse" id="collapseRaise">
+                    <form id="disForm">
+                        <div class="row .navbar-brand ">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Registration Number</a>
+                                <label for="rcId" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="rcId" aria-describedby="rcId"
+                                    placeholder="A71">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Asset Type</a>
+                                <label for="assetType" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="assetType" aria-describedby="assetType"
+                                    placeholder="Tata">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Car Make</a>
+                                <label for="make" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="make" aria-describedby="make"
+                                    placeholder="Tata">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Car Model</a>
+                                <label for="model" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="model" aria-describedby="model"
+                                    placeholder="Tiago">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Car Colour</a>
+                                <label for="colour" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="colour" aria-describedby="colour"
+                                    placeholder="Black">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Owner Name</a>
+                                <label for="ownerName" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="ownerName" aria-describedby="ownerName"
+                                    placeholder=" John Peter">
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Owner Aadhar</a>
+                                <label for="ownerAadhar" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="ownerAadhar" aria-describedby="ownerAadhar"
+                                    placeholder=" AD111111">
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Engine Number</a>
+                                <label for="engineNumber" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="engineNumber" aria-describedby="engineNumber"
+                                    placeholder=" EN111111">
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Insurance Certificate Number</a>
+                                <label for="insuranceCert" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="insuranceCert" aria-describedby="insuranceCert"
+                                    placeholder=" IC111111">
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Pollution Certificate Number</a>
+                                <label for="pollutionCert" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="pollutionCert" aria-describedby="pollutionCert"
+                                    placeholder=" PC111111">
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Registered State</a>
+                                <label for="registeredState" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="registeredState" aria-describedby="registeredState"
+                                    placeholder="statenamerto">
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <button type="button" onclick="createRc(event)"
+                                    class="btn btn-secondary rounded-pill">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12"></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row rowBox">
+        <div class="col-md-3 col-sm-12"></div>
+        <div class="col-md-6 col-sm-12">
+            <div class="card card-shadow">
+                <div class="card-header" style="background-color:teal">
+                    <legend class="text-center" data-bs-toggle="collapse" href="#collapseRead" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">RC Details</legend>
+                </div>
+                <div class="card-body collapse" id="collapseRead">
+                    <form>
+                        <div class="row .navbar-brand">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>RC ID</a>
+                                <label for="rcID" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="rcID" aria-describedby="rcID"
+                                    placeholder="A71">
+                            </div>
+                        </div>
+                        </br>
+                        <button type="submit" onclick="readTNRC(event)"
+                            class="btn btn-fill btn-secondary rounded-pill">Submit</button></br>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12"></div>
+    </div>
+</div>
+<div class="container-fluid"></div>
+    <div class="row rowBox">
+        <div class="col-md-3 col-sm-12"></div>
+        <div class="col-md-6 col-sm-12">
+            <div class="card card-shadow">
+                <div class="card-header" style="background-color:teal">
+                    <legend class="text-center" data-bs-toggle="collapse" href="#collapseTransfer" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">Transfer</legend>
+                </div>
+                <div class="card-body collapse" id="collapseTransfer">
+                    <form>
+                        <div class="row .navbar-brand">
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>RC Num</a>
+                                <label for="rcid" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="rcid" aria-describedby="rcid"
+                                    placeholder="A71">
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row .navbar-brand"></div>
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Transfer from</a>
+                                <label for="fromState" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="fromState" aria-describedby="fromState"
+                                    placeholder="statename">
+                            </div>
+                        </div>
+                        </br>
+                        <div class="row .navbar-brand"></div>
+                            <div class="col-md-12 col-sm-12" class="form-group">
+                                <a>Transfer To</a>
+                                <label for="toState" class="form-label mt-4"></label>
+                                <input type="text" class="form-control" id="toState" aria-describedby="totate"
+                                    placeholder="statename"></br>
+                                <button type="button" onclick="initiateRCTransfer(event)"
+                                    class="btn btn-fill btn-secondary rounded-pill">Initiate</button>
+                                <button type="button" onclick="approveRCTransfer(event)"
+                                    class="btn btn-fill btn-secondary rounded-pill">Approve</button>
+                                <button type="button" onclick="deleteRCTransfer(event)"
+                                    class="btn btn-fill btn-secondary rounded-pill">Delete</button>
+                            </div>
+                        </div>
+                        </br>                     
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12"></div>
+    </div>
+</div>
+<div class="container-fluid"></div>
+    <div class="row rowBox">
+        <div class="col-md-5 col-sm-12"></div>
+        <div class="col-md-4 col-sm-12">
+            <button type="submit" onclick="transferredCertificatestn()" class="btn btn-fill btn-primary rounded-pill">Transferred Certificates</button>
+        </div>
+        <div class="col-md-3 col-sm-12">
+        </div>
+
+    </div>
+</div>
+{{template "footer.html"}}

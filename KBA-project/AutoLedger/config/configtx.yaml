@@ -1,0 +1,158 @@
+Organizations:
+  - &OrdererOrg
+    Name: OrdererOrg
+    ID: OrdererMSP
+    MSPDir: ../organizations/ordererOrganizations/vaahan.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrdererMSP.admin')"
+    OrdererEndpoints:
+      - orderer.vaahan.com:7050
+  - &tnrto
+    Name: tnrtoMSP
+    ID: tnrtoMSP
+    MSPDir: ../organizations/peerOrganizations/tnrto.vaahan.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('tnrtoMSP.admin', 'tnrtoMSP.peer', 'tnrtoMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('tnrtoMSP.admin', 'tnrtoMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('tnrtoMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('tnrtoMSP.peer')"
+  - &klrto
+    Name: klrtoMSP
+    ID: klrtoMSP
+    MSPDir: ../organizations/peerOrganizations/klrto.vaahan.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('klrtoMSP.admin', 'klrtoMSP.peer', 'klrtoMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('klrtoMSP.admin', 'klrtoMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('klrtoMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('klrtoMSP.peer')"
+
+  - &knrto
+    Name: knrtoMSP
+    ID: knrtoMSP
+    MSPDir: ../organizations/peerOrganizations/knrto.vaahan.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('knrtoMSP.admin', 'knrtoMSP.peer', 'knrtoMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('knrtoMSP.admin', 'knrtoMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('knrtoMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('knrtoMSP.peer')"
+
+Capabilities:  
+  Channel: &ChannelCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_5: true
+    
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  Addresses:
+    - orderer.vaahan.com:7050
+  BatchTimeout: 2s
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  ThreeRtoChannel:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      OrdererType: etcdraft
+      EtcdRaft:
+        Consenters:
+          - Host: orderer.vaahan.com
+            Port: 7050
+            ClientTLSCert: ../organizations/ordererOrganizations/vaahan.com/orderers/orderer.vaahan.com/tls/server.crt
+            ServerTLSCert: ../organizations/ordererOrganizations/vaahan.com/orderers/orderer.vaahan.com/tls/server.crt
+      Organizations:
+        - *OrdererOrg
+      Capabilities: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *tnrto
+        - *klrto
+        - *knrto
+      Capabilities: *ApplicationCapabilities

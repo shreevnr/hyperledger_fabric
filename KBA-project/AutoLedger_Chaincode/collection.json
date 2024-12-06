@@ -1,0 +1,39 @@
+[
+    {
+    "name": "tnrtoPDC",
+    "policy": "OR('tnrtoMSP.member')",
+    "requiredPeerCount": 0,
+    "maxPeerCount": 1,
+    "blockToLive":10000,
+    "memberOnlyRead": true,
+    "memberOnlyWrite": true,
+    "endorsementPolicy": {
+        "signaturePolicy": "OR('tnrtoMSP.member')"
+    }
+    },
+    {
+    "name": "klrtoPDC",
+    "policy": "OR('klrtoMSP.member')",
+    "requiredPeerCount": 0,
+    "maxPeerCount": 1,
+    "blockToLive":100000,
+    "memberOnlyRead": true,
+    "memberOnlyWrite": true,
+    "endorsementPolicy": {
+        "signaturePolicy": "OR('klrtoMSP.member')"
+    }
+    },
+    {
+        "name": "TransferRCCollection",
+        "policy": "OR('tnrtoMSP.member','klrtoMSP.member','knrtoMSP.member')",
+        "requiredPeerCount": 1,
+        "maxPeerCount": 1,
+        "blockToLive":100000,
+        "memberOnlyRead": true,
+        "memberOnlyWrite": true,
+        "endorsementPolicy": {
+            "signaturePolicy": "OR('tnrtoMSP.member','klrtoMSP.member','knrtoMSP.member')"
+        }
+
+    }
+ ]

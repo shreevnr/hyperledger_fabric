@@ -1,0 +1,67 @@
+{{template "header.html"}}
+
+<div class="px-3 py-2 bg-secondary text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <h2 href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                <svg class="bi d-block mx-auto mb-1 " width="24" height="24"></svg>
+                {{.title}}
+            </h2>
+            <a type="button" class="btn btn-danger filled" href="/" class="nav-link text-white">
+                Back to dashboard
+            </a>
+            <a type="button" class="btn btn-danger filled marginLeft" href="/" class="nav-link text-white">
+                Logout
+            </a>
+        </div>
+    </div>
+</div>
+</br>
+<div class="row">
+    <div class="table-container">
+        <table class="table" style="width:100%">
+            <thead id="colored-table">
+                <th>RC Id</th>
+                <th>AssetType</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Owner Name</th>
+                <th>Owner Aadhar</th>
+                <th>Engine Number</th>
+                <th>Insurance Certificate</th>
+                <th>Pollution Certificate</th>
+                <th>Registered State</th>
+                <th>Status</th>
+                <th>Transferred From</th>
+                <th>Transferred To</th>
+                <th></th>
+
+            </thead>
+            <tbody>
+                {{range .RCList}}
+                <tr>
+                    <td>{{.RCId}}</td>
+                    <td>{{.AssetType}}</td>
+                    <td>{{.Make}}</td>
+                    <td>{{.Model}}</td>
+                    <td>{{.Color}}</td>
+                    <td>{{.OwnerName}}</td>
+                    <td>{{.OwnerAadhar}}</td>
+                    <td>{{.EngineNumber}}</td>
+                    <td>{{.InsuranceCert}}</td>
+                    <td>{{.PollutionCert}}</td>
+                    <td>{{.RegisteredState}}</td>
+                    <td>{{.Status}}</td>  
+                    <td>{{.TransferredFrom}}</td>
+                    <td>{{.TransferredTo}}</td>  
+                    <td><button class="btn btn-danger filled" onClick="addTransferRC('{{.RCId}}','{{.AssetType}}','{{.Make}}','{{.Model}}','{{.Color}}',
+                        '{{.OwnerName}}','{{.OwnerAadhar}}','{{.EngineNumber}}','{{.InsuranceCert}}','{{.PollutionCert}}','{{.TransferredTo}}');">Add
+                      </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+{{template "footer.html"}}
